@@ -10,13 +10,34 @@ After running make, you are ready to go.
 var s = "JavaScript syntax highlighting";
 alert(s);
 ```
-- ``` bash
+- Go to sslkey folder
+``` bash
 cd https-webserver/server/sslkeys
-- ```bash
+```
+- Edit the generator file with your information
+``` bash
+``` 
+- Add execution feature to file
+``` bash
 chmod +x genkeys.sh˘˘ 
-- ˘˘./genkeys.sh˘˘, this will generate public and private keys
-- ˘˘cd ../˘˘, server folder
-- ˘˘sudo ./main˘˘ 
+```
+- Generate the private and public keys
+``` bash
+./genkeys.sh
+```
+- Go back to the server folder
+``` bash
+cd ../
+``` 
+- (Optional) start a screen
+``` bash
+screen
+```
+- On the new screen created, run the server
+``` bash
+sudo ./main
+```
+
 ## Reqs
 - openssl (libssl-dev)
-
+- (optional) screen
