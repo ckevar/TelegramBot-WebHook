@@ -13,11 +13,11 @@ $ cd https-webserver/server/sslkeys
 ```
 - Open the generator bash to edit
 ``` bash
-nano genkeys.sh
+$ nano genkeys.sh
 ``` 
 - Edit the generator bash with your information
 ``` bash
-nano genkeys.sh
+
 ``` 
 - Add execution feature to file
 ``` bash
@@ -25,19 +25,19 @@ $ chmod +x genkeys.sh˘˘
 ```
 - Generate the private and public keys
 ``` bash
-./genkeys.sh
+$ ./genkeys.sh
 ```
 - Go back to the server folder
 ``` bash
-cd ../
+$ cd ../
 ``` 
 - (Optional) start a screen
 ``` bash
-screen
+$ screen
 ```
 - On the new screen created, run the server
 ``` bash
-sudo ./main
+$ sudo ./main
 ```
 
 ## Reqs
