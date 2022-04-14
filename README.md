@@ -7,9 +7,9 @@ Since this is a self-signed HTTP webserver, the certificate has to be uploaded m
 After running make, you are ready to go.
 ### Second Step in Terminal:
 
-- Go to sslkey folder
+- Go to sslkeys folder
 ``` bash
-$ cd https-webserver/server/sslkeys
+$ cd telegramBot-WebHook/server/sslkeys
 ```
 - Open the generator bash to edit
 ``` bash
