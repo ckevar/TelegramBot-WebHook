@@ -23,7 +23,7 @@ openssl req -newkey rsa:2048 -sha256 -nodes -keyout my-ssl-private.key\
 ``` 
 - On the same file. In the line curl, your public IP and your telegram Bot TOKEN are needed. This is used to upload your public key to the telegram api server:
 ``` bash
-curl -F "url=https://<IPublic IP>/" -F "certificate=@sslkeys/my-ssl-public.pem"\
+curl -F "url=https://<Public IP>/" -F "certificate=@sslkeys/my-ssl-public.pem"\
   https://api.telegram.org/bot<TELEGRAM BOT API TOKEN>/setWebhook
 ```
 - Add execution feature to the file
