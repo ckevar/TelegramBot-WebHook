@@ -3,6 +3,8 @@
 
 #include "TcpListener.h"
 #include "HTTPParser.h"
+#include "TelegramBot.h"
+
 #include <string>
 
 #define HTTP_METHOD_INDEX 	0
@@ -28,8 +30,11 @@ protected:
 	virtual void onMessageReceived(SSL *clientSocket, const char *msg, int length);
 
 private:
+	// Properties
 	std::string contentType;
 	HTTPParser http;
+	TelegramBot tBot;
+
 	// MIME Type genenrator
 	void MIMEType(std::string *rType);
 };

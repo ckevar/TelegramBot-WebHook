@@ -1,6 +1,7 @@
 # telegramBot-WebHook
 This is an webserver to be used as a webhook for a Telegram Bot. It means it uses tlsv1.2 from openssl libraries. 
 Since this is a self-signed HTTP webserver, the certificate has to be uploaded manually. You will find furthere information below.
+Take into account, in order to reply messages, you need a tsl/ssl client, and it cannot be done through WebHook, it only can be done using the URL API.
 
 ## Getting started
 ### First step:

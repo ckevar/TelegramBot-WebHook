@@ -1,8 +1,6 @@
 #include "HTTPParser.h"
 #include <cstring>
 
-#include <iostream>
-
 void HTTPParser::load(char *msg){
 	http = msg;
 	http_it = msg;
@@ -83,7 +81,6 @@ void HTTPParser::locate_Content(){
 }
 
 char HTTPParser::parse(){
-	std::cout << "MSG[:" << http << std::endl;
 	// Get REST Method
 	lookup_method();
 	if(RESTMethod < 0) return -1;

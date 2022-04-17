@@ -1,4 +1,3 @@
-
 #include <string>
 #include <istream>
 #include <sstream>
@@ -40,39 +39,40 @@ void WebServer::onMessageReceived(SSL *clientSocket, const char *msg, int length
 
 	} else if (http.RESTMethod == HTTP_METHOD_POST){
 		if (memcmp(http.resource.resource, "/ ", 2) == 0){
-			std::cout << "content " << http.Content << std::endl;
-			telegrambot.load_update(http.Content);
+			tBot.load(http.Content);
+			tBot.parse();
+			errorCode = 200;
+			contentType = "text";
+			content = "Working";
+			requestedFile = "NO_FILE";
 		}
-			// TODO: json parse
-			// json.load(http.Content);
-			// json.parse("\"update_id\"", &val);
-			// json.parse("\"message\"");
-			// json.parse("\"chat\"");
-			// json.parse("\"id\"");
-			// json.parse("\"text\"");
 	}
 
 	std::ostringstream oss;
 
-	// Open the document in the local file system
-	std::ifstream f("../wwwroot" + requestedFile);
+	if (requestedFile == "NO_FILE"){
+		// Open the document in the local file system
+		std::ifstream f("../wwwroot" + requestedFile);
 
-	// Check if it opened and if it did, grab the entire contents
-	if (f.good()) {
-		std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
-		content = str;
-		errorCode = 200;
+		// Check if it opened and if it did, grab the entire contents
+		if (f.good()) {
+			std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
+			content = str;
+			errorCode = 200;
+		}
+
+		f.close();
 	}
 
-	f.close();
-
 	// Write the document back to the client
-	oss << "HTTP/1.1 " << errorCode << " OK\r\n";
+	oss << "GET /sendMessage?chat_id=597192342&text=no HTTP/1.1 " << errorCode << " OK\r\n";
 	oss << "Cache-Control: no-cache, private\r\n";
 	oss << "Content-Type: "<< contentType << "\r\n";
 	oss << "Content-Length: " << content.size() << "\r\n";
 	oss << "\r\n";
 	oss << content;
+
+	std::cout << "Reply: " << oss.str() << std::endl;
 
 	std::string output = oss.str();
 	int size = output.size() + 1;
